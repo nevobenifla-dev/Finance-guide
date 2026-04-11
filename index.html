@@ -419,8 +419,13 @@
             headers: { 'Accept': 'application/json' }
         }).then(response => {
             if (response.ok) {
-                // העברה ל-PDF לאחר מילוי הפרטים בהצלחה
-                window.location.href = "https://nevobenifla-dev.github.io/Finance-guide/FinancialGuide.pdf";
+                // פותח את ה-PDF בכרטיסייה חדשה!
+                window.open("https://nevobenifla-dev.github.io/Finance-guide/FinancialGuide.pdf", "_blank");
+                
+                // משנה את הטקסט של הכפתור כדי שהלקוח יבין מה קרה ומנקה את הטופס
+                btn.innerText = "המדריך נפתח בחלון חדש! 🚀";
+                btn.style.opacity = "1";
+                form.reset(); 
             } else {
                 alert("אופס! נראה שהייתה שגיאה טכנית. אנא נסו שוב.");
                 btn.innerText = "לחצו כאן וקבלו את המדריך!";

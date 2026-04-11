@@ -3,208 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>המדריך לפתיחת קופה | נבו בניפלא</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <title>נבו בניפלא | המדריך לפתיחת קופות</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Assistant:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary-color: #1e3a8a;
-            --accent-color: #ea580c;
-            --bg-light: #f8fafc;
-            --text-dark: #0f172a;
+            --bg-dark: #0f172a;       /* כחול נייבי עמוק */
+            --accent-gold: #c5a059;   /* זהב חול יוקרתי */
+            --text-light: #f8fafc;    /* לבן אוף-ווייט */
+            --text-dim: #94a3b8;      /* אפור מוטה */
+            --container-width: 1280px;
+            --container-height: 720px;
         }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Heebo', sans-serif;
         }
+
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 4rem 1rem;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        .hero h1 span {
-            color: #fbbf24;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-        .container {
-            max-width: 1000px;
-            margin: -30px auto 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: #020617;
+            font-family: 'Assistant', sans-serif;
+            color: var(--text-light);
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 50px 0;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            width: var(--container-width);
+            min-height: var(--container-height);
+            background-color: var(--bg-dark);
+            border-radius: 16px;
             overflow: hidden;
             position: relative;
-            z-index: 10;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            border: 1px solid rgba(197, 160, 89, 0.15);
         }
-        .content {
-            flex: 1;
-            padding: 3rem;
-            min-width: 300px;
-        }
-        .content h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-        .benefits {
-            list-style: none;
-        }
-        .benefits li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-right: 30px;
-            font-weight: 500;
-        }
-        .benefits li::before {
-            content: '✓';
+
+        .slide-container::before {
+            content: '';
             position: absolute;
-            right: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.2rem;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.04) 0%, transparent 60%);
+            z-index: 0;
         }
-        .form-section {
-            flex: 1;
-            background: #f1f5f9;
-            padding: 3rem;
-            min-width: 300px;
-        }
-        .form-section h3 {
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        input {
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
             width: 100%;
-            padding: 12px;
-            margin-bottom: 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 1rem;
         }
-        button {
-            width: 100%;
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
+
+        h1, h2, h3 {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .gold-text { color: var(--accent-gold); }
+
+        .slide-title {
+            font-size: 68px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+
+        .slide-subtitle {
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--text-dim);
+            max-width: 850px;
+            line-height: 1.6;
+            margin-bottom: 45px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .image-frame {
+            border: 2px solid rgba(197, 160, 89, 0.5);
             padding: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 6px;
+            border-radius: 20px;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 22px 45px;
+            font-size: 24px;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #c2410c;
-        }
-        .about-section {
             text-align: center;
-            padding: 4rem 1rem;
-            max-width: 800px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
+        }
+
+        .pain-points-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pain-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(197, 160, 89, 0.3);
+        }
+
+        .pain-icon {
+            font-size: 45px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .pain-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .pain-card p {
+            font-size: 18px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 650px;
             margin: 0 auto;
         }
-        .disclaimer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.8rem;
-            color: #64748b;
+
+        input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 18px;
+            margin-bottom: 25px;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+            font-family: 'Assistant', sans-serif;
+            transition: border-color 0.3s;
         }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .content, .form-section { padding: 2rem; }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .benefit-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .benefit-item i { 
+            color: var(--accent-gold); 
+            font-size: 26px;
+            margin-top: 5px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .faq-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 35px;
+            border-radius: 16px;
+            border-right: 4px solid var(--accent-gold);
+        }
+
+        .faq-card h4 {
+            font-size: 22px;
+            font-family: 'Heebo', sans-serif;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .faq-card p {
+            font-size: 18px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1350px) {
+            .slide-container {
+                width: 92vw;
+                height: auto;
+                padding: 60px 30px;
+            }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .slide-title { font-size: 45px; }
+            .slide-subtitle { font-size: 20px; margin: 0 auto 40px; }
+            .pain-points-grid, .benefit-list, .faq-grid { grid-template-columns: 1fr; }
+            .image-frame { max-width: 400px; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <h1>הכסף שוכב בעו"ש? הגיע הזמן <span>להפסיק לפחד מבירוקרטיה</span></h1>
-        <p>קבלו בחינם את "המדריך השלם לפתיחת קופות וחשבונות השקעה". צעד אחר צעד, בלי סיסמאות - נטו פרקטיקה.</p>
-    </header>
-
-    <div class="container">
-        <div class="content">
-            <h2>מה יחכה לכם במדריך?</h2>
-            <ul class="benefits">
-                <li>איך פותחים קופת גמל להשקעה וקרן השתלמות מהספה בבית.</li>
-                <li>הדרך המהירה לקנות קרן כספית דרך אפליקציית הבנק.</li>
-                <li>פתיחת חשבון מסחר עצמאי בלי לשלם עמלות מטורפות.</li>
-                <li>איך לוודא שאתם לא משלמים כפל ביטוחים מיותרים.</li>
-            </ul>
+<div class="slide-container">
+    <div class="slide-content hero-grid">
+        <div>
+            <h1 class="slide-title">מפסיקים לפחד מהבנק.<br><span class="gold-text">מתחילים לנהל את הכסף.</span></h1>
+            <p class="slide-subtitle">אתם יודעים שצריך להשקיע. אתם מבינים שהכסף בעו"ש מאבד מהערך שלו. אבל כשזה מגיע לתכל'ס – הבירוקרטיה משתקת. הגיע הזמן לשבור את המחסום הטכני עם מדריך פרקטי שלוקח אתכם יד ביד עד ללחיצה על כפתור הפתיחה.</p>
+            <a href="#form-slide" class="cta-button">קבלו את המדריך במתנה <i class="fa-solid fa-arrow-down" style="margin-right: 10px;"></i></a>
         </div>
-        <div class="form-section">
-            <h3>לשליחת המדריך אליכם בחינם:</h3>
-            
+        <div class="image-frame">
+            <img src="https://nevobenifla-dev.github.io/Finance-guide/Nevo-picture.jpg" alt="נבו בניפלא" class="profile-img">
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center; margin-bottom: 15px;">למה כל כך הרבה צעירים <span class="gold-text">לא משקיעים?</span></h2>
+        <p class="slide-subtitle" style="text-align: center; margin: 0 auto;">זה לא חוסר רצון, זה חוסר ודאות. רוב האנשים שאני מלווה נתקעים מול שלושה מחסומים עיקריים שיצרנו לעצמנו בראש:</p>
+        
+        <div class="pain-points-grid">
+            <div class="pain-card">
+                <i class="fa-solid fa-triangle-exclamation pain-icon"></i>
+                <h3>הפחד לעשות טעות</h3>
+                <p>החשש לבחור מסלול השקעה לא נכון, ללחוץ על הכפתור הלא נכון באפליקציה, או לשים את הכסף במקום שאי אפשר לסמוך עליו.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fa-solid fa-lock pain-icon"></i>
+                <h3>הפחד מ"נעילת" הכסף</h3>
+                <p>הדאגה המוכרת שאם נפתח קופת השקעה, הכסף ייסגר לשנים ארוכות ולא נדע איך למשוך אותו ברגע שנצטרך אותו באמת.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fa-solid fa-laptop-code pain-icon"></i>
+                <h3>מחסום ה"איך בתכל'ס"</h3>
+                <p>יודעים שצריך להשקיע, אבל לא ברור מאיפה מתחילים. לאיזה אתר נכנסים? איך המסך אמור להיראות? ואיך פותחים את זה טכנית?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center;">מה תמצאו <span class="gold-text">בתוך המדריך?</span></h2>
+        <p class="slide-subtitle" style="text-align: center; margin: 0 auto;">בלי שפה בנקאית מסובכת. פשוט צ'קליסט ברור, צעד אחר צעד, שיסדר לכם את הראש ויכניס אתכם לפעולה.</p>
+        
+        <div class="benefit-list">
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>פתיחת קופות מאפס</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">הנחיות פרקטיות לפתיחת קופת גמל להשקעה, קרן השתלמות וחשבונות מסחר עצמאי (IRA).</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>השוואה חכמה</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">איפה ואיך להשוות דמי ניהול وتשואות (גמל-נט, פנסיה-נט) כדי לוודא שלא עושים עליכם קופה.</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>מותאם לשכירים ועצמאיים</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">הסברים ממוקדים שמתאימים לסטטוס התעסוקתי שלכם, כדי שתדעו בדיוק מה רלוונטי אליכם.</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>קניית קרן כספית</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">הדרך הפשוטה והמהירה להעביר את הכסף מהעו"ש לקרן כספית, ישירות דרך האפליקציה של הבנק.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center;">למה בכלל יצרתי את <span class="gold-text">המדריך הזה?</span></h2>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 22px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px;">
+                נעים מאוד, אני נבו בניפלא. אני מלווה צעירים להתנהלות כלכלית נכונה, מתוך הבנה שהחסך האדיר בחינוך פיננסי בבתי הספר ובבית פוגע בעתיד של כולנו. רובנו לא מבינים את ההבדלים בין אפיקי ההשקעה השונים, ובטח שלא מבינים כמה קל לתפעל אותם.
+            </p>
+            <p style="font-size: 22px; color: var(--text-dim); line-height: 1.8; margin-bottom: 30px;">
+                הזמן הזה שאנחנו צעירים הוא הזדמנות הפז שלנו. זה הזמן ללמוד איך לנהל את הכסף, ולא לתת לו לנהל אותנו. ההרגלים והידע שנצבור היום הם מה שייתן למשפחה העתידית שלנו נקודת זינוק טובה יותר וביטחון כלכלי. 
+            </p>
+            <h3 style="color: var(--accent-gold); font-size: 28px; font-weight: 700;">לבחור נכון. לחיות טוב יותר.</h3>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="form-slide">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center;">הגיע הזמן לעשות <span class="gold-text">את הצעד הראשון</span></h2>
+        <p class="slide-subtitle" style="text-align: center; margin: 0 auto 40px;">השאירו פרטים כאן למטה, וקובץ המדריך המלא ייפתח לכם באופן מיידי.</p>
+        
+        <div class="form-box">
             <form id="leadForm" action="https://formspree.io/f/xreowrrr" method="POST">
                 <input type="text" name="name" placeholder="שם מלא" required>
-                <input type="email" name="email" placeholder="אימייל" required>
+                <input type="email" name="email" placeholder="כתובת אימייל" required>
                 <input type="tel" name="phone" placeholder="מספר נייד (לוואטסאפ)" required>
-                
-                <button type="submit" id="submitBtn">שלח לי את המדריך עכשיו!</button>
-                <p style="text-align: center; font-size: 0.85rem; margin-top: 1rem; color: #64748b;">בלי ספאם. המידע שלך שמור אצלנו.</p>
+                <button type="submit" id="submitBtn" class="cta-button" style="width: 100%; margin-top: 15px;">לחצו כאן וקבלו את המדריך!</button>
+                <p style="text-align: center; margin-top: 20px; font-size: 16px; color: #64748b;">בלי ספאם. המידע שלכם נשאר רק אצלי.</p>
             </form>
         </div>
     </div>
+</div>
 
-    <section class="about-section">
-        <h2 style="color: var(--primary-color); margin-bottom: 1rem;">מי עומד מאחורי המדריך?</h2>
-        <p>נעים מאוד, אני <strong>נבו בניפלא</strong>. מלווה צעירים להתנהלות כלכלית נכונה.</p>
-        <p>בניתי את המדריך הזה כי ראיתי יותר מדי אנשים שרוצים להשקיע, אבל נתקעים מול מחסום טכני של "איך בכלל פותחים את זה?". אני כאן כדי לחבר בין הכלכלה הריאלית לפסיכולוגיה של הכסף, ולעזור לכם לבחור נכון, כדי לחיות טוב יותר.</p>
-    </section>
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="margin-bottom: 50px;">שאלות <span class="gold-text">נפוצות</span></h2>
+        <div class="faq-grid">
+            <div class="faq-card">
+                <h4>האם זה באמת בחינם?</h4>
+                <p>כן! זה מדריך שיצרתי במקור באופן בלעדי עבור הלקוחות שלי בתהליכי הליווי. הבנתי שאין סיבה לא לחלק אותו לכולם כדי להפוך את הצעד הראשון שלכם להרבה יותר קל ונוח.</p>
+            </div>
+            <div class="faq-card">
+                <h4>האם צריך ידע קודם או הבנה בשוק ההון?</h4>
+                <p>לא! חשוב רק שתבינו פנימית איזה מסלול השקעה מתאים למטרות שלכם. כל הפרקטיקה של "איך פותחים ועל מה לוחצים" כבר נמצאת בפנים בצורה הכי פשוטה שיש.</p>
+            </div>
+            <div class="faq-card">
+                <h4>האם זה מתאים גם לעצמאיים או רק לשכירים?</h4>
+                <p>המדריך מתאים גם וגם! עשיתי הפרדה ברורה במקומות הרלוונטיים (כמו בקרנות פנסיה והשתלמות) כדי שכל אחד ימצא את מה שמתאים לסטטוס שלו.</p>
+            </div>
+            <div class="faq-card">
+                <h4>איך ניתן ליצור איתך קשר לשאלות?</h4>
+                <p>בשמחה. ניתן לשלוח לי הודעת וואטסאפ למספר 054-7333112, או פשוט ללחוץ על הכפתור שמחכה לכם בתחתית המדריך עצמו לאחר ההורדה.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <footer class="disclaimer">
-        <p>כל המידע המועבר במדריך ובדף זה הינו לימודי ואינפורמטיבי בלבד ואינו מהווה המלצה או תחליף לייעוץ פנסיוני, השקעות או מס על ידי בעל רישיון כחוק.</p>
-    </footer>
+<footer style="text-align: center; padding: 30px; color: #64748b; font-family: 'Assistant', sans-serif;">
+    <p>נבו בניפלא | ליווי פיננסי התנהגותי | לבחור נכון. לחיות טוב יותר.</p>
+    <p style="opacity: 0.6; margin-top: 15px; font-size: 14px; max-width: 800px; margin-left: auto; margin-right: auto;">כל המידע המועבר במדריך ובדף זה הינו טכני, לימודי ואינפורמטיבי בלבד, ואינו מהווה המלצה, חוות דעת, ייעוץ פנסיוני או ייעוץ השקעות. כל פעולה היא באחריותכם בלבד.</p>
+</footer>
 
-    <script>
-        document.getElementById("leadForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // עוצר את המעבר האוטומטי ל-Formspree
-            
-            var form = event.target;
-            var btn = document.getElementById("submitBtn");
-            btn.innerText = "טוען את המדריך..."; // משנה את הטקסט כדי שהלקוח יראה שזה עובד
-            
-            var data = new FormData(form);
-            
-            // שולח את הנתונים בשקט ברקע
-            fetch(form.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    // ברגע שהשליחה הצליחה - מעביר ישירות ל-PDF שלך
-                    window.location.href = "https://nevobenifla-dev.github.io/Finance-guide/FinancialGuide.pdf";
-                } else {
-                    alert("אופס! הייתה בעיה קטנה בשליחת הטופס. אנא נסה שוב.");
-                    btn.innerText = "שלח לי את המדריך עכשיו!";
-                }
-            }).catch(error => {
-                alert("שגיאת רשת. אנא בדוק את חיבור האינטרנט שלך.");
-                btn.innerText = "שלח לי את המדריך עכשיו!";
-            });
+<script>
+    document.getElementById("leadForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var form = event.target;
+        var btn = document.getElementById("submitBtn");
+        
+        btn.innerText = "המדריך נטען...";
+        btn.style.opacity = "0.8";
+        
+        var data = new FormData(form);
+        fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                // העברה ל-PDF לאחר מילוי הפרטים בהצלחה
+                window.location.href = "https://nevobenifla-dev.github.io/Finance-guide/FinancialGuide.pdf";
+            } else {
+                alert("אופס! נראה שהייתה שגיאה טכנית. אנא נסו שוב.");
+                btn.innerText = "לחצו כאן וקבלו את המדריך!";
+                btn.style.opacity = "1";
+            }
+        }).catch(error => {
+            alert("שגיאת רשת. אנא ודאו שאתם מחוברים לאינטרנט ונסו שוב.");
+            btn.innerText = "לחצו כאן וקבלו את המדריך!";
+            btn.style.opacity = "1";
         });
-    </script>
+    });
+</script>
 
 </body>
 </html>

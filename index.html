@@ -3,266 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>המדריך השלם לסוגי אפיקי ההשקעה | נבו בניפלא</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>נבו בניפלא | המדריך השלם לאפיקי השקעה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Assistant:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #1e3a8a; /* כחול עמוק פיננסי */
-            --secondary: #f59e0b; /* צהוב-כתום בולט להנעה לפעולה */
-            --text: #333333;
-            --bg: #f9fafb;
+            --bg-dark: #0f172a;       /* כחול נייבי עמוק */
+            --accent-gold: #c5a059;   /* זהב חול יוקרתי */
+            --text-light: #f8fafc;    /* לבן אוף-ווייט */
+            --text-dim: #94a3b8;      /* אפור מוטה */
+            --container-width: 1280px;
+            --container-height: 720px;
         }
 
         * {
             box-sizing: border-box;
-            font-family: 'Heebo', sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: #020617;
+            font-family: 'Assistant', sans-serif;
+            color: var(--text-light);
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 50px;
+            padding: 50px 0;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 900px;
-            width: 100%;
-            padding: 50px 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            color: var(--primary);
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #555;
-            margin-top: 0;
-        }
-
-        .highlight {
-            color: var(--secondary);
-            font-weight: 800;
-        }
-
-        .content-flex {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .text-section {
-            flex: 1.2;
-            min-width: 300px;
-        }
-
-        .text-section p {
-            font-size: 1.15rem;
-            line-height: 1.6;
-        }
-
-        .text-section h3 {
-            color: var(--primary);
-            margin-top: 30px;
-        }
-
-        .text-section ul {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 15px;
-        }
-
-        .text-section li {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+        .slide-container {
+            width: var(--container-width);
+            min-height: var(--container-height);
+            background-color: var(--bg-dark);
+            border-radius: 16px;
+            overflow: hidden;
             position: relative;
-            padding-right: 35px;
-        }
-
-        .text-section li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.3rem;
-        }
-
-        .form-section {
-            flex: 0.8;
-            min-width: 300px;
-            background-color: var(--primary);
-            padding: 35px;
-            border-radius: 8px;
-            color: white;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 80px;
+            border: 1px solid rgba(197, 160, 89, 0.15);
         }
 
-        .form-section h3 {
-            margin-top: 0;
-            font-size: 1.4rem;
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.04) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .gold-text { color: var(--accent-gold); }
+
+        .slide-title {
+            font-size: 68px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+
+        .slide-subtitle {
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--text-dim);
+            max-width: 850px;
+            line-height: 1.6;
+            margin-bottom: 45px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .image-frame {
+            border: 2px solid rgba(197, 160, 89, 0.5);
+            padding: 15px;
+            border-radius: 20px;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 22px 45px;
+            font-size: 24px;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
             text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
+        }
+
+        .pain-points-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pain-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(197, 160, 89, 0.3);
+        }
+
+        .pain-icon {
+            font-size: 45px;
+            color: var(--accent-gold);
             margin-bottom: 20px;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .pain-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .pain-card p {
+            font-size: 18px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 650px;
+            margin: 0 auto;
         }
 
         input {
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 18px;
+            margin-bottom: 25px;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+            font-family: 'Assistant', sans-serif;
+            transition: border-color 0.3s;
         }
 
         input:focus {
-            outline: 2px solid var(--secondary);
+            outline: none;
+            border-color: var(--accent-gold);
         }
 
-        button {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 6px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
-            margin-top: 10px;
+        .benefit-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        button:hover {
-            background-color: #d97706;
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            border-radius: 12px;
         }
 
-        button:active {
-            transform: scale(0.98);
+        .benefit-item i { 
+            color: var(--accent-gold); 
+            font-size: 26px;
+            margin-top: 5px;
         }
 
-        .success-message {
-            display: none;
-            text-align: center;
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
         }
 
-        .success-message h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        .faq-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 35px;
+            border-radius: 16px;
+            border-right: 4px solid var(--accent-gold);
         }
 
-        .whatsapp-btn {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
+        .faq-card h4 {
+            font-size: 22px;
+            font-family: 'Heebo', sans-serif;
+            margin-bottom: 15px;
+            color: var(--text-light);
         }
 
-        .whatsapp-btn:hover {
-            background-color: #1ebe57;
+        .faq-card p {
+            font-size: 18px;
+            color: var(--text-dim);
+            line-height: 1.6;
         }
 
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 1rem;
-        }
-
-        @media(max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.2rem; }
-            .content-flex { padding: 25px; flex-direction: column; }
+        @media (max-width: 1350px) {
+            .slide-container {
+                width: 92vw;
+                height: auto;
+                padding: 60px 30px;
+            }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .slide-title { font-size: 45px; }
+            .slide-subtitle { font-size: 20px; margin: 0 auto 40px; }
+            .pain-points-grid, .benefit-list, .faq-grid { grid-template-columns: 1fr; }
+            .image-frame { max-width: 400px; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>איפה שמים את הכסף?</h1>
-            <h2>המדריך השלם ל<span class="highlight">סוגי אפיקי ההשקעה</span></h2>
-        </header>
+<div class="slide-container">
+    <div class="slide-content hero-grid">
+        <div>
+            <h1 class="slide-title">איפה שמים את הכסף?<br><span class="gold-text">המדריך לאפיקי השקעה.</span></h1>
+            <p class="slide-subtitle">קרן השתלמות, קופת גמל, מסחר עצמאי או קרן כספית? יש היום כל כך הרבה אפשרויות שרובנו פשוט קופאים ולא עושים כלום – ונותנים לכסף להישחק בעו"ש. הגיע הזמן לעשות סדר בבלגן.</p>
+            <a href="#form-slide" class="cta-button">הורידו את המדריך בחינם <i class="fa-solid fa-arrow-down" style="margin-right: 10px;"></i></a>
+        </div>
+        <div class="image-frame">
+            <img src="https://nevobenifla-dev.github.io/Finance-guide/Nevo-picture.jpg" alt="נבו בניפלא" class="profile-img">
+        </div>
+    </div>
+</div>
 
-        <div class="content-flex">
-            <div class="text-section">
-                <p>רוצים להתחיל לדאוג לעתיד הכלכלי שלכם, אבל נתקעים מול מחסום של <strong>"עומס מידע"</strong>?</p>
-                <p>יש היום כל כך הרבה אפיקים: קרן השתלמות, קופת גמל, מסחר עצמאי ועוד. רובנו פשוט קופאים ולא עושים כלום, או גרוע מכך - משאירים את הכסף בעו"ש ונותנים לו להישחק.</p>
-                
-                <h3>מה תגלו במדריך שעושה סדר בבלגן?</h3>
-                <ul>
-                    <li>פירוט של כל אפיקי ההשקעה המרכזיים בשפה פשוטה.</li>
-                    <li>היתרונות והחסרונות של כל אפיק (גמל, פוליסת חיסכון, כספית ועוד).</li>
-                    <li>איך להבין איזה מכשיר באמת מתאים לזמן ולמטרות שלכם.</li>
-                </ul>
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center; margin-bottom: 15px;">למה אנחנו משאירים את הכסף <span class="gold-text">להירקב בעו"ש?</span></h2>
+        <p class="slide-subtitle" style="text-align: center; margin: 0 auto;">זה לא חוסר אכפתיות מעתידנו הכלכלי, אלא חוסר ודאות מוחלט. אלו שלושת המחסומים שמונעים מרובנו להתחיל:</p>
+        
+        <div class="pain-points-grid">
+            <div class="pain-card">
+                <i class="fa-solid fa-brain pain-icon"></i>
+                <h3>עומס מידע משתק</h3>
+                <p>המונחים נשמעים כמו סינית. פוליסת חיסכון? אג"ח? גמל להשקעה? כשיש כל כך הרבה אפשרויות, הבחירה הטבעית היא פשוט לא לבחור.</p>
             </div>
+            <div class="pain-card">
+                <i class="fa-solid fa-bullseye pain-icon"></i>
+                <h3>התאמה למטרה</h3>
+                <p>לא יודעים איזה כלי מתאים לחיסכון לדירה בעוד 10 שנים, ואיזה כלי מתאים לכסף שנצטרך לטיול בעוד חצי שנה.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fa-solid fa-chart-line pain-icon"></i>
+                <h3>אשליית ה"מקום הבטוח"</h3>
+                <p>משאירים את הכסף בבנק כי זה מרגיש "בטוח", למרות שבמציאות האינפלציה שוחקת לו את כוח הקנייה בכל יום שעובר.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <div class="form-section">
-                <h3>הורידו עכשיו את המדריך המלא בחינם!</h3>
-                <form id="leadForm">
-                    <input type="text" id="fullName" placeholder="שם מלא" required>
-                    <input type="email" id="email" placeholder="כתובת אימייל" required>
-                    <input type="tel" id="phone" placeholder="מספר טלפון" required>
-                    <button type="submit">שלח לי את המדריך עכשיו</button>
-                </form>
-                
-                <div class="success-message" id="successMsg">
-                    <h4>איזה כיף! 🎉</h4>
-                    <p>המדריך נפתח עבורך כעת בכרטיסייה חדשה כדי שתוכל להתחיל לקרוא מיד.</p>
-                    <p>מוכנים לבנות תוכנית פעולה אמיתית?</p>
-                    <a href="https://wa.me/972547333112" target="_blank" class="whatsapp-btn">שלחו לי הודעה בוואטסאפ</a>
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center;">מה תגלו <span class="gold-text">בתוך המדריך?</span></h2>
+        <p class="slide-subtitle" style="text-align: center; margin: 0 auto;">בלי שפה של כלכלנים. ריכוז של כל המכשירים הפיננסיים המרכזיים עם היתרונות והחסרונות של כל אחד.</p>
+        
+        <div class="benefit-list">
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>סקירת כל אפיקי ההשקעה</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">מקופת גמל להשקעה וקרן השתלמות, דרך קרן כספית, ועד לחשבון מסחר עצמאי (IRA). הכל במקום אחד.</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>יתרונות מול חסרונות</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">שקיפות מלאה על כל מכשיר: איפה יש פטור ממס? איפה הכסף "נעול"? ואיפה משלמים דמי ניהול גבוהים מדי?</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>חוקי הברזל לבחירה</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">איך להשתמש ב"משולש הקדוש" (סיכון, זמן וגיל) כדי להבין איזו רמת חשיפה מתאימה לכם כרגע.</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-check"></i> 
+                <div>
+                    <strong>שכירים ועצמאיים כאחד</strong><br>
+                    <span style="font-size: 18px; color: var(--text-dim);">הסבר ברור על הפקדות מעסיק, הטבות מס לעצמאיים וניצול מקסימלי של תקרות ההפקדה.</span>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p><strong>נבו בניפלא</strong> - אימון פיננסי-התנהגותי | לבחור נכון. לחיות טוב יותר.</p>
-    </footer>
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center;">למה בכלל יצרתי את <span class="gold-text">המדריך הזה?</span></h2>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 22px; color: var(--text-dim); line-height: 1.8; margin-bottom: 20px;">
+                נעים מאוד, אני נבו בניפלא. אני מלווה צעירים ומשוחררים להתנהלות כלכלית נכונה, מתוך אמונה שהשילוב בין עולם הכלכלה הריאלי לפסיכולוגיה של הכסף הוא המפתח האמיתי להצלחה. 
+            </p>
+            <p style="font-size: 22px; color: var(--text-dim); line-height: 1.8; margin-bottom: 30px;">
+                שמתי לב להרבה צעירים שרוצים להתחיל לדאוג לעתיד שלהם, אבל פשוט לא יודעים איך להשוות בין קרן השתלמות לאג"ח. המדריך הזה נכתב כדי לתת לכם את 20% הידע הטכני שאתם חייבים כדי להתחיל לחסוך נכון. את ה-80% הנותרים – שזו ההתנהגות והפסיכולוגיה שלכם – נוכל לבנות יחד בהמשך.
+            </p>
+            <h3 style="color: var(--accent-gold); font-size: 28px; font-weight: 700;">לבחור נכון. לחיות טוב יותר.</h3>
+        </div>
+    </div>
+</div>
 
-    <script>
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // מונע את רענון העמוד
-            
-            // שים כאן את הקישור האמיתי לקובץ ה-PDF שלך
-            const pdfUrl = "financebook.pdf"; 
-            
-            // פתיחת המדריך בכרטיסייה חדשה
-            window.open(pdfUrl, '_blank');
-            
-            // הסתרת הטופס והצגת הודעת התודה והוואטסאפ
-            this.style.display = 'none';
-            document.getElementById('successMsg').style.display = 'block';
-            
-            // כאן אפשר להוסיף קוד חיבור ל-CRM או גוגל שיטס במידת הצורך
+<div class="slide-container" id="form-slide">
+    <div class="slide-content">
+        <h2 class="slide-title" style="text-align: center;">הגיע הזמן לעשות <span class="gold-text">את הצעד הראשון</span></h2>
+        <p class="slide-subtitle" style="text-align: center; margin: 0 auto 40px;">השאירו פרטים כאן למטה, וקובץ ההשוואה המלא ייפתח לכם באופן מיידי.</p>
+        
+        <div class="form-box">
+            <form id="leadForm" action="https://formspree.io/f/xreowrrr" method="POST">
+                <input type="text" name="name" placeholder="שם מלא" required>
+                <input type="email" name="email" placeholder="כתובת אימייל" required>
+                <input type="tel" name="phone" placeholder="מספר נייד (לוואטסאפ)" required>
+                <button type="submit" id="submitBtn" class="cta-button" style="width: 100%; margin-top: 15px;">לחצו כאן וקבלו את המדריך!</button>
+                <p style="text-align: center; margin-top: 20px; font-size: 16px; color: #64748b;">בלי ספאם. המידע שלכם נשאר רק אצלי.</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container">
+    <div class="slide-content">
+        <h2 class="slide-title" style="margin-bottom: 50px;">שאלות <span class="gold-text">נפוצות</span></h2>
+        <div class="faq-grid">
+            <div class="faq-card">
+                <h4>האם זה באמת בחינם?</h4>
+                <p>כן! זה מדריך שמרכז את כל הידע הבסיסי שכל צעיר בישראל חייב להכיר כדי לא לתת לכסף שלו להישחק.</p>
+            </div>
+            <div class="faq-card">
+                <h4>האם יש במדריך המלצות במה בדיוק להשקיע?</h4>
+                <p>לא. המדריך סוקר אובייקטיבית את היתרונות והחסרונות של המכשירים הקיימים (כגון נזילות, מיסוי ודמי ניהול). ההחלטה היכן להשקיע היא באחריותכם ובהתאם למטרות שלכם.</p>
+            </div>
+            <div class="faq-card">
+                <h4>האם צריך ידע מוקדם בשוק ההון?</h4>
+                <p>ממש לא. המדריך נכתב בגובה העיניים ומסביר מושגים מורכבים (כמו מס רווחי הון או קרן כספית) בשפה שכולם יכולים להבין.</p>
+            </div>
+            <div class="faq-card">
+                <h4>איך ניתן ליצור איתך קשר לשאלות על ליווי אישי?</h4>
+                <p>בתוך המדריך תמצאו קישור ישיר לוואטסאפ שלי. ניתן לשלוח לי הודעה, ותקבלו מענה להתחלת תהליך ליווי פיננסי-התנהגותי אישי.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 30px; color: #64748b; font-family: 'Assistant', sans-serif;">
+    <p>נבו בניפלא | אימון פיננסי התנהגותי | לבחור נכון. לחיות טוב יותר.</p>
+    <p style="opacity: 0.6; margin-top: 15px; font-size: 14px; max-width: 800px; margin-left: auto; margin-right: auto;">הבהרה משפטית: כל המידע המופיע במדריך ובדף זה הינו טכני, לימודי ואינפורמטיבי בלבד. שום דבר מהכתוב אינו מהווה המלצה, חוות דעת, ייעוץ פנסיוני או ייעוץ השקעות. כל פעולה שאתם בוחרים לבצע היא באחריותכם האישית בלבד.</p>
+</footer>
+
+<script>
+    document.getElementById("leadForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var form = event.target;
+        var btn = document.getElementById("submitBtn");
+        
+        btn.innerText = "המדריך נטען...";
+        btn.style.opacity = "0.8";
+        
+        var data = new FormData(form);
+        fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                // העברה ל-PDF שביקשת לאחר מילוי הפרטים בהצלחה
+                window.location.href = "https://nevobenifla-dev.github.io/Finance-guide/financebook.pdf";
+            } else {
+                alert("אופס! נראה שהייתה שגיאה טכנית. אנא נסו שוב.");
+                btn.innerText = "לחצו כאן וקבלו את המדריך!";
+                btn.style.opacity = "1";
+            }
+        }).catch(error => {
+            alert("שגיאת רשת. אנא ודאו שאתם מחוברים לאינטרנט ונסו שוב.");
+            btn.innerText = "לחצו כאן וקבלו את המדריך!";
+            btn.style.opacity = "1";
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
